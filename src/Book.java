@@ -34,10 +34,16 @@ public class Book {
         if (obj == null || this.getClass() != obj.getClass())
             return false;
         Book book = (Book) obj;
-        return bookName + publishingYear + authorName == book.bookName + book.publishingYear + book.authorName;
+        if (authorName != this.authorName) return false;
+        if (publishingYear != this.publishingYear) return false;
+        return bookName == book.bookName;
     }
-    public int hashCode () {
-        return java.util.Objects.hash(bookName, publishingYear, authorName);
+
+    public int hashCode() {
+        int result = bookName == null ? 0 : bookName.hashCode();
+        result = 31 * result + Integer.parseInt(String.valueOf(authorName));
+        result = 31 * result + publishingYear;
+        return result;
     }
 }
 
