@@ -21,14 +21,14 @@ public class Author {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (this.getClass() != obj.getClass())
-        return false;
+        if (obj == null || this.getClass() != obj.getClass())
+            return false;
         Author author = (Author) obj;
-        return secondName == author.secondName;
+        return firstName + secondName == author.firstName + author.secondName;
     }
 
     public int hashCode () {
-        return java.util.Objects.hash(secondName);
+        return java.util.Objects.hash(firstName, secondName);
     }
 }
 

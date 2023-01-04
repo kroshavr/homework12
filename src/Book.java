@@ -31,13 +31,13 @@ public class Book {
 
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (this.getClass() != obj.getClass())
+        if (obj == null || this.getClass() != obj.getClass())
             return false;
         Book book = (Book) obj;
-        return bookName == book.bookName;
+        return bookName + publishingYear + authorName == book.bookName + book.publishingYear + book.authorName;
     }
     public int hashCode () {
-        return java.util.Objects.hash(bookName);
+        return java.util.Objects.hash(bookName, publishingYear, authorName);
     }
 }
 
