@@ -1,10 +1,11 @@
 public class Book {
-    String bookName;
-    Author authorName;
-    int publishingYear;
-    public Book (String bookName, Author authorName, int publishingYear) {
+    private final String bookName;
+    private final Author authorName;
+    private int publishingYear;
+
+    public Book(String bookName, Author authorName, int publishingYear) {
         this.bookName = bookName;
-        this.authorName = new Author (authorName.firstName, authorName.secondName);
+        this.authorName = new Author(authorName.firstName, authorName.secondName);
         this.publishingYear = publishingYear;
     }
 
@@ -23,5 +24,24 @@ public class Book {
     public void setPublishingYear(int publishingYear) {
         this.publishingYear = publishingYear;
     }
+
+    public String toString() {
+        return bookName + authorName + publishingYear;
+    }
+
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (this.getClass() != obj.getClass())
+            return false;
+        Book book = (Book) obj;
+        return bookName == book.bookName;
+    }
+    public int hashCode () {
+        return java.util.Objects.hash(bookName);
+    }
 }
+
+
+
+
 
